@@ -55,43 +55,41 @@ class HomeTabs extends StatelessWidget {
     final Color? unselected = Colors.grey[700];
 
     Widget saleContainer = Container(
-            padding: const EdgeInsets.all(5),
-            width: 500,
-            height: 270,
-            decoration: BoxDecoration(
-              color: Colors.orange,
-              borderRadius: BorderRadius.circular(8),
+      padding: const EdgeInsets.all(5),
+      width: 500,
+      height: 270,
+      decoration: BoxDecoration(
+        color: Colors.orange,
+        borderRadius: BorderRadius.circular(8),
+      ),
+      child: Column(
+        children: [
+          const Text(
+            'Tech Life Sale',
+            style: TextStyle(
+                color: Colors.white, fontSize: 27, fontWeight: FontWeight.w900),
+          ),
+          const Text(
+            'Tech Boom Better Life',
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 16,
             ),
-            child: Column(
-              children: [
-                const Text(
-                  'Tech Life Sale',
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 27,
-                      fontWeight: FontWeight.w900),
-                ),
-                const Text(
-                  'Tech Boom Better Life',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 16,
-                  ),
-                ),
-                GridView.count(
-                  padding: const EdgeInsets.all(5),
-                  shrinkWrap: true,
-                  primary: false,
-                  crossAxisSpacing: 7,
-                  mainAxisSpacing: 7,
-                  crossAxisCount: 4,
-                  children: [
-                    offerCard('', 'Tech Life Sale', 'The Best Price Ever'),
-                  ],
-                ),
-              ],
-            ),
-          );
+          ),
+          GridView.count(
+            padding: const EdgeInsets.all(1),
+            shrinkWrap: true,
+            primary: false,
+            // crossAxisSpacing: 1,
+            // mainAxisSpacing: 8,
+            crossAxisCount: 4,
+            children: [
+              offerCard('', 'Tech Life Sale', 'The Best Price Ever'),
+            ],
+          ),
+        ],
+      ),
+    );
     Widget hotTab = Padding(
       padding: const EdgeInsets.only(left: 12, right: 12),
       child: Column(
@@ -105,7 +103,6 @@ class HomeTabs extends StatelessWidget {
             ],
           ),
           saleContainer,
-          
         ],
       ),
     );

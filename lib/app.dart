@@ -12,6 +12,7 @@ class CommerceApp extends StatelessWidget {
       routes: {
         '/': (context) => const HomePage(),
       },
+      debugShowCheckedModeBanner: false,
     );
   }
 }
