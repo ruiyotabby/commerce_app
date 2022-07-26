@@ -90,21 +90,39 @@ class HomeTabs extends StatelessWidget {
         ],
       ),
     );
-    Widget hotTab = Padding(
-      padding: const EdgeInsets.only(left: 12, right: 12),
-      child: Column(
-        children: [
-          Row(
+    Widget hotTab = ListView(
+      // shrinkWrap: true,
+      children: [
+        Padding(
+          padding: const EdgeInsets.only(left: 12, right: 12),
+          child: Column(
             children: [
-              Container(
-                height: 126,
-                decoration: BoxDecoration(color: Colors.grey[100]),
+              Row(
+                children: [
+                  Container(
+                    height: 126,
+                    decoration: BoxDecoration(color: Colors.grey[100]),
+                  ),
+                ],
               ),
+              saleContainer,
+              Container(
+                padding: const EdgeInsets.only(top: 14),
+                child: GridView.count(
+                  shrinkWrap: true,
+                  physics: NeverScrollableScrollPhysics(),
+                  crossAxisCount: 2,
+                  children: [
+                    Card(),
+                    Card(),
+                    Card(),
+                  ],
+                ),
+              )
             ],
           ),
-          saleContainer,
-        ],
-      ),
+        ),
+      ],
     );
     return DefaultTabController(
       length: 8,
