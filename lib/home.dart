@@ -1,187 +1,11 @@
+import 'dart:math';
+
 import 'package:commerce_app/account.dart';
 import 'package:commerce_app/cart.dart';
 import 'package:commerce_app/category.dart';
 import 'package:commerce_app/message.dart';
+import 'package:commerce_app/widgets/cards.dart';
 import 'package:flutter/material.dart';
-
-class HomeTabs extends StatelessWidget {
-  const HomeTabs({Key? key}) : super(key: key);
-
-  Card offerCard(String image, String label, String trailing) {
-    return Card(
-      margin: const EdgeInsets.all(1),
-      child: Column(
-        children: [
-          // Image.asset(image),
-          Container(
-            color: const Color.fromARGB(255, 238, 201, 34),
-            child: Column(
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      label,
-                      style: const TextStyle(
-                        fontWeight: FontWeight.w800,
-                        fontSize: 11,
-                      ),
-                    ),
-                  ],
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      trailing,
-                      style: const TextStyle(
-                        fontSize: 9,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    )
-                  ],
-                )
-              ],
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    const Color selected = Colors.red;
-    final Color? unselected = Colors.grey[700];
-
-    Widget saleContainer = Container(
-      padding: const EdgeInsets.all(5),
-      width: 500,
-      height: 270,
-      decoration: BoxDecoration(
-        color: Colors.orange,
-        borderRadius: BorderRadius.circular(8),
-      ),
-      child: Column(
-        children: [
-          const Text(
-            'Tech Life Sale',
-            style: TextStyle(
-                color: Colors.white, fontSize: 27, fontWeight: FontWeight.w900),
-          ),
-          const Text(
-            'Tech Boom Better Life',
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 16,
-            ),
-          ),
-          GridView.count(
-            padding: const EdgeInsets.all(1),
-            shrinkWrap: true,
-            primary: false,
-            // crossAxisSpacing: 1,
-            // mainAxisSpacing: 8,
-            crossAxisCount: 4,
-            children: [
-              offerCard('', 'Tech Life Sale', 'The Best Price Ever'),
-            ],
-          ),
-        ],
-      ),
-    );
-    Widget hotTab = ListView(
-      // shrinkWrap: true,
-      children: [
-        Padding(
-          padding: const EdgeInsets.only(left: 12, right: 12),
-          child: Column(
-            children: [
-              Row(
-                children: [
-                  Container(
-                    height: 126,
-                    decoration: BoxDecoration(color: Colors.grey[100]),
-                  ),
-                ],
-              ),
-              saleContainer,
-              Container(
-                padding: const EdgeInsets.only(top: 14),
-                child: GridView.count(
-                  shrinkWrap: true,
-                  physics: NeverScrollableScrollPhysics(),
-                  crossAxisCount: 2,
-                  children: [
-                    Card(),
-                    Card(),
-                    Card(),
-                  ],
-                ),
-              )
-            ],
-          ),
-        ),
-      ],
-    );
-    return DefaultTabController(
-      length: 8,
-      child: Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.white,
-          elevation: 0,
-          bottom: PreferredSize(
-            preferredSize: const Size.fromHeight(20),
-            child: TabBar(
-              labelStyle: TextStyle(
-                color: unselected,
-                fontSize: 18,
-              ),
-              unselectedLabelStyle: TextStyle(color: unselected, fontSize: 15),
-              unselectedLabelColor: unselected,
-              labelColor: selected,
-              isScrollable: true,
-              indicatorColor: selected,
-              tabs: const [
-                Tab(text: 'Hot'),
-                Tab(text: 'Men shoes'),
-                Tab(text: 'Men Clothes'),
-                Tab(text: 'Phones'),
-                Tab(text: 'TVs'),
-                Tab(text: 'Women shoes'),
-                Tab(text: 'Electronics'),
-                Tab(text: 'Earphones'),
-              ],
-            ),
-          ),
-          actions: [
-            IconButton(
-              onPressed: () {},
-              icon: Icon(
-                Icons.search,
-                color: unselected,
-              ),
-            ),
-          ],
-        ),
-        body: Center(
-          child: TabBarView(
-            children: [
-              hotTab,
-              Text('Men Shoes'),
-              Text('Men Clothes'),
-              Text('Phones'),
-              Text('TVs'),
-              Text('Women shoes'),
-              Text('Electronics'),
-              Text('Earphones'),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -194,7 +18,7 @@ class _HomePageState extends State<HomePage> {
   int pageIndex = 0;
 
   final pages = [
-    const HomeTabs(),
+    HomeTabs(),
     const CategoryPage(),
     const MessagePage(),
     const CartPage(),
@@ -285,6 +109,180 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       body: pages[pageIndex],
       bottomNavigationBar: buildNavBar(context),
+    );
+  }
+}
+
+class HomeTabs extends StatelessWidget {
+  HomeTabs({Key? key}) : super(key: key);
+
+  Card offerCard(String image, String label, String trailing) {
+    return Card(
+      margin: const EdgeInsets.all(1),
+      child: Column(
+        children: [
+          // Image.asset(image),
+          Container(
+            color: const Color.fromARGB(255, 238, 201, 34),
+            child: Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      label,
+                      style: const TextStyle(
+                        fontWeight: FontWeight.w800,
+                        fontSize: 11,
+                      ),
+                    ),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      trailing,
+                      style: const TextStyle(
+                        fontSize: 9,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    )
+                  ],
+                )
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  final List<String?> _hints = [
+    'Shoes',
+    'Phones',
+    'TV',
+    'Camera',
+  ];
+  final int i = 0;
+
+  @override
+  Widget build(BuildContext context) {
+    const Color selected = Colors.red;
+    final Color? unselected = Colors.grey[700];
+
+    Widget saleContainer = Container(
+      padding: const EdgeInsets.all(5),
+      width: 500,
+      height: 270,
+      decoration: BoxDecoration(
+        color: Colors.orange,
+        borderRadius: BorderRadius.circular(8),
+      ),
+      child: Column(
+        children: [
+          const Text(
+            'Tech Life Sale',
+            style: TextStyle(
+                color: Colors.white, fontSize: 27, fontWeight: FontWeight.w900),
+          ),
+          const Text(
+            'Tech Boom Better Life',
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 16,
+            ),
+          ),
+          GridView.count(
+            padding: const EdgeInsets.all(1),
+            shrinkWrap: true,
+            primary: false,
+            // crossAxisSpacing: 1,
+            // mainAxisSpacing: 8,
+            crossAxisCount: 4,
+            children: [
+              offerCard('', 'Tech Life Sale', 'The Best Price Ever'),
+            ],
+          ),
+        ],
+      ),
+    );
+    Widget hotTab = ListView(
+      // shrinkWrap: true,
+      children: [
+        Padding(
+          padding: const EdgeInsets.only(left: 12, right: 12),
+          child: Column(
+            children: [
+              saleContainer,
+              Container(
+                padding: const EdgeInsets.only(top: 10),
+                color: Colors.grey[200],
+                child: const CardsGrid(),
+              ),
+            ],
+          ),
+        ),
+      ],
+    );
+    return DefaultTabController(
+      length: 8,
+      child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.white,
+          elevation: 1,
+          title: SizedBox(
+            height: 35,
+            child: TextField(
+              enabled: false,
+              decoration: InputDecoration(
+                  filled: true,
+                  fillColor: Colors.grey[200],
+                  border: const OutlineInputBorder(),
+                  labelText: _hints[i],
+                  prefixIcon: const Icon(Icons.search)),
+            ),
+          ),
+          bottom: PreferredSize(
+            preferredSize: const Size.fromHeight(30),
+            child: TabBar(
+              labelStyle: TextStyle(
+                color: unselected,
+                fontSize: 18,
+              ),
+              unselectedLabelStyle: TextStyle(color: unselected, fontSize: 15),
+              unselectedLabelColor: unselected,
+              labelColor: selected,
+              isScrollable: true,
+              indicatorColor: selected,
+              tabs: const [
+                Tab(text: 'Hot'),
+                Tab(text: 'Men shoes'),
+                Tab(text: 'Men Clothes'),
+                Tab(text: 'Phones'),
+                Tab(text: 'TVs'),
+                Tab(text: 'Women shoes'),
+                Tab(text: 'Electronics'),
+                Tab(text: 'Earphones'),
+              ],
+            ),
+          ),
+        ),
+        body: Center(
+          child: TabBarView(
+            children: [
+              hotTab,
+              const TabBarWidget(),
+              const TabBarWidget(),
+              const TabBarWidget(),
+              const TabBarWidget(),
+              const TabBarWidget(),
+              const TabBarWidget(),
+              const TabBarWidget(),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }

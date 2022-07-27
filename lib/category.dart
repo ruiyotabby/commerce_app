@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 
 class CategoryPage extends StatelessWidget {
   const CategoryPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return _NavigationRail();
+    return const _NavigationRail();
   }
 }
 
@@ -20,9 +19,32 @@ class _NavigationRail extends StatefulWidget {
 }
 
 class _NavigationRailState extends State<_NavigationRail> {
+  int _selectedIndex = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        elevation: 1,
+        title: SizedBox(
+          height: 40,
+          // padding: EdgeInsets.all(8),
+          child: TextField(
+            enabled: false,
+            decoration: InputDecoration(
+              filled: true,
+              fillColor: Colors.grey[200],
+              prefixIcon: const Icon(Icons.search),
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(40),
+              ),
+              labelText: 'Search...',
+            ),
+            onTap: () {},
+          ),
+        ),
+      ),
       body: Row(
         children: [
           LayoutBuilder(builder: (context, constraints) {
@@ -31,8 +53,10 @@ class _NavigationRailState extends State<_NavigationRail> {
                 constraints: BoxConstraints(minHeight: constraints.maxHeight),
                 child: IntrinsicHeight(
                   child: NavigationRail(
+                    useIndicator: true,
+                    indicatorColor: Colors.grey[200],
                     labelType: NavigationRailLabelType.all,
-                    destinations: [
+                    destinations: const [
                       NavigationRailDestination(
                         icon: Icon(Icons.auto_awesome_outlined),
                         selectedIcon: Icon(Icons.auto_awesome),
@@ -68,15 +92,106 @@ class _NavigationRailState extends State<_NavigationRail> {
                         label: Text('Featured'),
                       ),
                     ],
-                    selectedIndex: 0,
+                    selectedIndex: _selectedIndex,
+                    onDestinationSelected: (int index) {
+                      setState(() {
+                        _selectedIndex = index;
+                      });
+                    },
                   ),
                 ),
               ),
             );
           }),
-          VerticalDivider(thickness: 1, width: 1)
+          const VerticalDivider(thickness: 1, width: 1),
+          const Expanded(
+            child: NavigationRailPages(),
+          ),
         ],
       ),
+    );
+  }
+}
+
+class NavigationRailPages extends StatelessWidget {
+  const NavigationRailPages({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView(
+      padding: const EdgeInsets.all(5),
+      children: [
+        Card(
+          child: Container(
+            padding: const EdgeInsets.all(5),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                SizedBox(
+                  height: 38,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    // crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Text('Accessories'),
+                      TextButton(
+                        onPressed: () {},
+                        child: Container(
+                          alignment: Alignment.center,
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              Text(
+                                'ALL',
+                                style: TextStyle(color: Colors.orange[900]),
+                              ),
+                              Icon(
+                                Icons.navigate_next_outlined,
+                                color: Colors.orange[900],
+                              ),
+                            ],
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+                const Divider(thickness: 1),
+                GridView.count(
+                  shrinkWrap: true,
+                  physics: NeverScrollableScrollPhysics(),
+                  crossAxisCount: 3,
+                  children: [
+                    Column(
+                      children: [
+                        Expanded(child: Image.asset('name')),
+                        Text('Category grid'),
+                      ],
+                    ),
+                    Expanded(
+                      child: Column(
+                        children: [
+                          Image.asset('name'),
+                          Text('Category grid'),
+                        ],
+                      ),
+                    ),
+                    Expanded(
+                      child: Column(
+                        children: [
+                          Image.asset('name'),
+                          Text('Category grid'),
+                        ],
+                      ),
+                    ),
+                  ],
+                )
+              ],
+            ),
+          ),
+        ),
+      ],
     );
   }
 }
