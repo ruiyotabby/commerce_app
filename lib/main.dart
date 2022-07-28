@@ -2,6 +2,4 @@ import 'package:flutter/material.dart';
 
 import 'app.dart';
 
-void main() => runApp(const CommerceApp(
-  
-));
+void main() => runApp(const CommerceApp());

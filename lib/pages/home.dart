@@ -1,9 +1,7 @@
-import 'dart:math';
-
-import 'package:commerce_app/account.dart';
-import 'package:commerce_app/cart.dart';
-import 'package:commerce_app/category.dart';
-import 'package:commerce_app/message.dart';
+import 'package:commerce_app/pages/account.dart';
+import 'package:commerce_app/pages/cart.dart';
+import 'package:commerce_app/pages/category.dart';
+import 'package:commerce_app/pages/message.dart';
 import 'package:commerce_app/widgets/cards.dart';
 import 'package:flutter/material.dart';
 
@@ -28,7 +26,7 @@ class _HomePageState extends State<HomePage> {
   final Color? unselectedColor = Colors.grey[700];
   final Color? selectedColor = Colors.black;
 
-  Column navBarColumn(
+  Widget navBarColumn(
       int index, IconData selected, IconData unselected, String label) {
     // index is the page number
     return Column(
@@ -272,13 +270,13 @@ class HomeTabs extends StatelessWidget {
           child: TabBarView(
             children: [
               hotTab,
-              const TabBarWidget(),
-              const TabBarWidget(),
-              const TabBarWidget(),
-              const TabBarWidget(),
-              const TabBarWidget(),
-              const TabBarWidget(),
-              const TabBarWidget(),
+              const GridViewWidget(count: 5),
+              const GridViewWidget(count: 5),
+              const GridViewWidget(count: 5),
+              const GridViewWidget(count: 5),
+              const GridViewWidget(count: 5),
+              const GridViewWidget(count: 5),
+              const GridViewWidget(count: 5),
             ],
           ),
         ),

@@ -85,8 +85,10 @@ class _CardsGridState extends State<CardsGrid> {
   }
 }
 
-class TabBarWidget extends StatelessWidget {
-  const TabBarWidget({Key? key}) : super(key: key);
+class GridViewWidget extends StatelessWidget {
+  const GridViewWidget({Key? key, required this.count}) : super(key: key);
+
+  final int count;
 
   @override
   Widget build(BuildContext context) {
@@ -95,7 +97,7 @@ class TabBarWidget extends StatelessWidget {
         Column(
           children: [
             GridView.count(
-              crossAxisCount: 5,
+              crossAxisCount: count,
               crossAxisSpacing: 5,
               mainAxisSpacing: 10,
               childAspectRatio: 9 / 13,
@@ -104,36 +106,8 @@ class TabBarWidget extends StatelessWidget {
               shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),
               children: [
-                Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Expanded(
-                      child: Image.asset(
-                        'assets/images/images (31).jpeg',
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                    const Text(
-                      'label1',
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                  ],
-                ),
-                Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Expanded(
-                      child: Image.asset(
-                        'assets/images/images (30).jpeg',
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                    const Text(
-                      'Label2',
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                  ],
-                ),
+                gridViewColumn('assets/images/images (31).jpeg', 'Label1'),
+                gridViewColumn('assets/images/images (30).jpeg', 'Label2')
               ],
             ),
             Container(
@@ -142,6 +116,24 @@ class TabBarWidget extends StatelessWidget {
               child: const CardsGrid(),
             )
           ],
+        ),
+      ],
+    );
+  }
+
+  Widget gridViewColumn(String image, String label) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Expanded(
+          child: Image.asset(
+            image,
+            fit: BoxFit.cover,
+          ),
+        ),
+        Text(
+          label,
+          overflow: TextOverflow.ellipsis,
         ),
       ],
     );

@@ -1,4 +1,4 @@
-import 'package:commerce_app/home.dart';
+import 'package:commerce_app/pages/home.dart';
 import 'package:flutter/material.dart';
 
 class CommerceApp extends StatelessWidget {

@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 
 class CategoryPage extends StatelessWidget {
@@ -72,7 +73,7 @@ class _NavigationRailState extends State<_NavigationRail> {
                       ),
                       NavigationRailDestination(
                         icon: Icon(Icons.auto_awesome),
-                        label: Text('Featured'),
+                        label: Text('phones'),
                       ),
                       NavigationRailDestination(
                         icon: Icon(Icons.auto_awesome_outlined),
@@ -104,7 +105,8 @@ class _NavigationRailState extends State<_NavigationRail> {
             );
           }),
           const VerticalDivider(thickness: 1, width: 1),
-          const Expanded(
+          //make listview below. replace expanded
+          Expanded(
             child: NavigationRailPages(),
           ),
         ],
@@ -121,6 +123,7 @@ class NavigationRailPages extends StatelessWidget {
     return ListView(
       padding: const EdgeInsets.all(5),
       children: [
+        //make Card the widget parent
         Card(
           child: Container(
             padding: const EdgeInsets.all(5),
@@ -133,7 +136,7 @@ class NavigationRailPages extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     // crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Text('Accessories'),
+                      const Text('Accessories'),
                       TextButton(
                         onPressed: () {},
                         child: Container(
@@ -160,36 +163,35 @@ class NavigationRailPages extends StatelessWidget {
                 const Divider(thickness: 1),
                 GridView.count(
                   shrinkWrap: true,
-                  physics: NeverScrollableScrollPhysics(),
+                  physics: const NeverScrollableScrollPhysics(),
                   crossAxisCount: 3,
+                  mainAxisSpacing: 5,
+                  crossAxisSpacing: 3,
                   children: [
-                    Column(
-                      children: [
-                        Expanded(child: Image.asset('name')),
-                        Text('Category grid'),
-                      ],
-                    ),
-                    Expanded(
-                      child: Column(
-                        children: [
-                          Image.asset('name'),
-                          Text('Category grid'),
-                        ],
-                      ),
-                    ),
-                    Expanded(
-                      child: Column(
-                        children: [
-                          Image.asset('name'),
-                          Text('Category grid'),
-                        ],
-                      ),
-                    ),
+                    gridViewColumn('', 'Category grid'),
+                    gridViewColumn(' ', 'Grid')
                   ],
                 )
               ],
             ),
           ),
+        ),
+      ],
+    );
+  }
+
+  Column gridViewColumn(String image, String label) {
+    return Column(
+      children: [
+        Expanded(
+          child: Image.asset(
+            image,
+            fit: BoxFit.cover,
+          ),
+        ),
+        Text(
+          label,
+          overflow: TextOverflow.ellipsis,
         ),
       ],
     );
