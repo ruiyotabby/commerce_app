@@ -244,6 +244,7 @@ class HomeTabs extends StatelessWidget {
           bottom: PreferredSize(
             preferredSize: const Size.fromHeight(30),
             child: TabBar(
+              indicatorSize: TabBarIndicatorSize.label,
               labelStyle: TextStyle(
                 color: unselected,
                 fontSize: 18,

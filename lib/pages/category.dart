@@ -106,7 +106,7 @@ class _NavigationRailState extends State<_NavigationRail> {
           }),
           const VerticalDivider(thickness: 1, width: 1),
           //make listview below. replace expanded
-          Expanded(
+          const Expanded(
             child: NavigationRailPages(),
           ),
         ],

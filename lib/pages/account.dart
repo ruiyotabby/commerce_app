@@ -1,3 +1,4 @@
+import 'package:commerce_app/pages/login.dart';
 import 'package:flutter/material.dart';
 
 class AccountPage extends StatelessWidget {
@@ -5,8 +6,6 @@ class AccountPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: Text('Account page'),
-    );
+    return const LogInPage();
   }
 }

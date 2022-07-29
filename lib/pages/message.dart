@@ -1,4 +1,4 @@
-import 'package:commerce_app/pages/category.dart';
+
 import 'package:flutter/material.dart';
 
 class MessagePage extends StatelessWidget {
@@ -27,10 +27,10 @@ class MessagePage extends StatelessWidget {
               ListTile(
                 tileColor: Colors.white,
                 leading:
-                    Icon(Icons.help_center, size: 40, color: Colors.purple),
-                title: Text('Contact Us'),
-                subtitle: Text('Describe your quesry'),
-                trailing: Icon(Icons.navigate_next, size: 35),
+                    const Icon(Icons.help_center, size: 40, color: Colors.purple),
+                title: const Text('Contact Us'),
+                subtitle: const Text('Describe your quesry'),
+                trailing: const Icon(Icons.navigate_next, size: 35),
                 onTap: () {},
               ),
               Padding(
@@ -39,7 +39,7 @@ class MessagePage extends StatelessWidget {
                   children: [
                     Column(
                       children: [
-                        MessageTiles(),
+                        const MessageTiles(),
                         Row(
                           children: const [
                             Padding(

@@ -6,7 +6,7 @@ class CartPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Center(
-      child: Text('Nothing to show here'),
+      child: Text('Nothing to show here, \n Add items to cart'),
     );
   }
 }
