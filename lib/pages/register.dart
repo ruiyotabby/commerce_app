@@ -8,7 +8,7 @@ class RegisterPage extends StatelessWidget {
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
-    
+
     return DefaultTabController(
       length: 2,
       child: Scaffold(
@@ -37,14 +37,19 @@ class RegisterPage extends StatelessWidget {
               )),
           body: Center(
             child: TabBarView(
-              children: [loginTab(), registerTab(width, height)],
+              children: [
+                loginTab(),
+                registerTab(width, height),
+              ],
             ),
           )),
     );
   }
 
-  ListView registerTab(double width, double height) {
+  Widget registerTab(double width, double height) {
     return ListView(
+      shrinkWrap: true,
+      padding: const EdgeInsets.only(left: 20, right: 20),
       children: [
         Column(
           children: [
@@ -58,16 +63,18 @@ class RegisterPage extends StatelessWidget {
             SizedBox(height: 20),
             TextFormField(
               decoration: InputDecoration(
-                  prefixIcon: Icon(Icons.lock_outline),
-                  hintText: 'Set your password',
-                  suffixIcon: IconButton(
-                    icon: Icon(Icons.remove_red_eye_outlined),
-                    onPressed: () {},
-                  )),
+                prefixIcon: Icon(Icons.lock_outline),
+                hintText: 'Set your password',
+                suffixIcon: IconButton(
+                  icon: Icon(Icons.remove_red_eye_outlined),
+                  onPressed: () {},
+                ),
+              ),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             TextFormField(
               decoration: InputDecoration(
+                isDense: true,
                 prefixIcon: const Icon(Icons.message_outlined),
                 hintText: 'Enter Email Code',
                 suffix: OutlinedButton(
@@ -83,16 +90,16 @@ class RegisterPage extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(height: 30),
-            LoginButtons(
+            const SizedBox(height: 30),
+            const LoginButtons(
                 buttonColor: Color.fromARGB(255, 241, 33, 18),
-                icon: Icons.app_registration_rounded,
+                icon: Icons.edit,
                 iconColor: Colors.white,
                 label: 'Create Account',
                 textColor: Colors.white),
             SizedBox(height: 30),
             Row(
-              children: [
+              children: const [
                 Expanded(child: Divider(thickness: 1, endIndent: 13)),
                 Text('Or Connect with'),
                 Expanded(child: Divider(thickness: 1, indent: 13)),
