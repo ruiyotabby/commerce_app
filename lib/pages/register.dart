@@ -90,6 +90,10 @@ class RegisterPage extends StatelessWidget {
                 ),
               ),
             ),
+            // Code to write
+            //    Ask whether to register as a buyer or seller?
+            // done
+
             const SizedBox(height: 30),
             const LoginButtons(
                 buttonColor: Color.fromARGB(255, 241, 33, 18),
@@ -126,7 +130,6 @@ class RegisterPage extends StatelessWidget {
                 SizedBox(width: 5),
                 TextButton(
                     onPressed: () {
-                      loginTab();
                     },
                     child: Text('Login'))
               ],
