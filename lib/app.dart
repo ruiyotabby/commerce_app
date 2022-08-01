@@ -7,6 +7,8 @@ import 'package:flutter/material.dart';
 class CommerceApp extends StatelessWidget {
   const CommerceApp({Key? key}) : super(key: key);
 
+  static double? global;
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

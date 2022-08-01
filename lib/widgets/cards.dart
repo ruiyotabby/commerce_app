@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 
-//themedata
-// TextTheme
-
 class CardsGrid extends StatefulWidget {
   const CardsGrid({Key? key}) : super(key: key);
 
@@ -619,9 +616,7 @@ class _ItemCardState extends State<ItemCard> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     ElevatedButton(
-                      onPressed: () {
-                        
-                      },
+                      onPressed: () {},
                       style: ElevatedButton.styleFrom(
                           primary: Colors.red,
                           shape: RoundedRectangleBorder(
