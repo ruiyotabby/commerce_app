@@ -1,4 +1,4 @@
-import 'package:commerce_app/pages/login.dart';
+import 'package:commerce_app/screens/login.dart';
 import 'package:flutter/material.dart';
 
 class AccountPage extends StatelessWidget {

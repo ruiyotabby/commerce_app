@@ -1,20 +1,20 @@
 class Products {
-  final int id;
-  final String title;
-  final double price;
-  final String description;
-  final String category;
-  final String image;
-  final Rating rating;
+  final int? id;
+  final String? title;
+  final double? price;
+  final String? description;
+  final String? category;
+  final String? image;
+  final Rating? rating;
 
   const Products({
-    required this.id,
-    required this.title,
-    required this.description,
-    required this.category,
-    required this.rating,
-    required this.image,
-    required this.price,
+     this.id,
+     this.title,
+     this.description,
+     this.category,
+     this.rating,
+     this.image,
+     this.price,
   });
 
   factory Products.fromJson(Map<String, dynamic> json) {
@@ -31,12 +31,12 @@ class Products {
 }
 
 class Rating {
-  final double rate;
-  final int count;
+  final double? rate;
+  final int? count;
 
   const Rating({
-    required this.rate,
-    required this.count,
+     this.rate,
+     this.count,
   });
 
   factory Rating.fromJson(Map<String, dynamic> json) {

@@ -1,7 +1,7 @@
-import 'package:commerce_app/pages/account.dart';
-import 'package:commerce_app/pages/cart.dart';
-import 'package:commerce_app/pages/category.dart';
-import 'package:commerce_app/pages/message.dart';
+import 'package:commerce_app/screens/account.dart';
+import 'package:commerce_app/screens/cart.dart';
+import 'package:commerce_app/screens/category.dart';
+import 'package:commerce_app/screens/message.dart';
 import 'package:commerce_app/widgets/cards.dart';
 import 'package:flutter/material.dart';
 
@@ -15,7 +15,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int pageIndex = 0;
 
-  final pages = [
+  final screens = [
     HomeTabs(),
     const CategoryPage(),
     const MessagePage(),
@@ -105,7 +105,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: pages[pageIndex],
+      body: screens[pageIndex],
       bottomNavigationBar: buildNavBar(context),
     );
   }

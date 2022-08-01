@@ -1,6 +1,6 @@
-import 'package:commerce_app/pages/home.dart';
-import 'package:commerce_app/pages/login.dart';
-import 'package:commerce_app/pages/register.dart';
+import 'package:commerce_app/screens/home.dart';
+import 'package:commerce_app/screens/login.dart';
+import 'package:commerce_app/screens/register.dart';
 import 'package:commerce_app/widgets/cards.dart';
 import 'package:flutter/material.dart';
 

@@ -1,4 +1,4 @@
-import 'package:commerce_app/pages/login.dart';
+import 'package:commerce_app/screens/login.dart';
 import 'package:flutter/material.dart';
 
 class RegisterPage extends StatelessWidget {
@@ -92,7 +92,7 @@ class RegisterPage extends StatelessWidget {
             ),
             // Code to write
             //    Ask whether to register as a buyer or seller?
-            // 
+            //
 
             const SizedBox(height: 30),
             const LoginButtons(
@@ -128,10 +128,7 @@ class RegisterPage extends StatelessWidget {
               children: [
                 Text('Have an Account?'),
                 SizedBox(width: 5),
-                TextButton(
-                    onPressed: () {
-                    },
-                    child: Text('Login'))
+                TextButton(onPressed: () {}, child: Text('Login'))
               ],
             )
           ],
