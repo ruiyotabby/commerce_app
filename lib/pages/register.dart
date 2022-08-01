@@ -92,7 +92,7 @@ class RegisterPage extends StatelessWidget {
             ),
             // Code to write
             //    Ask whether to register as a buyer or seller?
-            // done
+            // 
 
             const SizedBox(height: 30),
             const LoginButtons(

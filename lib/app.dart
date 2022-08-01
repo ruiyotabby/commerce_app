@@ -1,6 +1,7 @@
 import 'package:commerce_app/pages/home.dart';
 import 'package:commerce_app/pages/login.dart';
 import 'package:commerce_app/pages/register.dart';
+import 'package:commerce_app/widgets/cards.dart';
 import 'package:flutter/material.dart';
 
 class CommerceApp extends StatelessWidget {
@@ -14,9 +15,24 @@ class CommerceApp extends StatelessWidget {
       routes: {
         '/': (context) => const HomePage(),
         '/login': (context) => const LogInPage(),
-        '/register':(context) => const RegisterPage(),
+        '/register': (context) => const RegisterPage(),
+        ItemCard.routeName: (context) => const ItemCard(),
       },
       debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        primaryColor: Colors.white,
+        brightness: Brightness.light,
+        textTheme: TextTheme(
+          bodySmall: TextStyle(color: Colors.grey[700]),
+          labelLarge: TextStyle(
+            fontSize: 17,
+          ),
+          labelMedium: TextStyle(
+            color: Colors.grey[700],
+            fontSize: 14,
+          ),
+        ),
+      ),
     );
   }
 }
