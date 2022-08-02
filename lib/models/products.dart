@@ -1,3 +1,11 @@
+import 'dart:convert';
+
+// List<Products> productsFromJson(String str) =>
+// List<Products>.from(json.decode(str).map((x) => Products.fromJson(x)));
+
+// String productsToJson(List<Products> data) =>
+//     json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
+
 class Products {
   final int? id;
   final String? title;
@@ -25,7 +33,7 @@ class Products {
       category: json['category'],
       image: json['image'],
       rating: Rating.fromJson(json['rating']),
-      price: json['price'].toDouble(),
+      price: json['price'],
     );
   }
 }

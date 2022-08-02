@@ -1,16 +1,20 @@
-import 'dart:convert';
-import 'dart:developer';
-
 import 'package:commerce_app/models/products.dart';
-import 'package:http/http.dart' as http;
+import 'package:commerce_app/services/fetch_products.dart';
+import 'package:flutter/foundation.dart';
 
-Future<Products> fetchProducts(http.Client client) async {
-  final response =
-      await client.get(Uri.parse('https://fakestoreapi.com/products'));
+class ProductsData with ChangeNotifier {
+  List list = [];
+  Products responseData = Products();
+  // bool error = false;
 
-  if (response.statusCode == 200) {
-    return Products.fromJson(jsonDecode(response.body));
-  } else {
-    throw Exception('Failed');
+  void fetchData() async {
+    try {
+      var data = await HttpFetch.fetchProducts();
+      responseData = data;
+      list = data as List;
+    } catch (e) {
+      e.toString();
+    }
+    notifyListeners();
   }
 }
