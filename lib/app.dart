@@ -14,17 +14,10 @@ class CommerceApp extends StatefulWidget {
 }
 
 class _CommerceAppState extends State<CommerceApp> {
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   final productProvider =
-  //       Provider.of<getDataProvider>(context, listen: false);
-  //   productProvider.getData();
-  // }
+  
 
   @override
   Widget build(BuildContext context) {
-    // final productProvider = Provider.of<getDataProvider>(context);
     return MaterialApp(
       title: 'Commerce',
       initialRoute: '/',

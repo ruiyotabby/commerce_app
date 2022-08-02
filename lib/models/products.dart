@@ -24,7 +24,7 @@ class Products {
       description: json['description'],
       category: json['category'],
       image: json['image'],
-      rating: json['rating'],
+      rating: Rating.fromJson(json['rating']),
       price: json['price'].toDouble(),
     );
   }

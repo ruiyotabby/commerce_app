@@ -15,14 +15,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   final productProvider =
-  //       Provider.of<getDataProvider>(context, listen: false);
-  //   productProvider.getData();
-  // }
-
   int pageIndex = 0;
 
   final screens = [
