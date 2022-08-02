@@ -1,3 +1,4 @@
+import 'package:commerce_app/models/products.dart';
 import 'package:commerce_app/screens/home.dart';
 import 'package:commerce_app/screens/login.dart';
 import 'package:commerce_app/screens/register.dart';
@@ -14,31 +15,32 @@ class CommerceApp extends StatefulWidget {
 }
 
 class _CommerceAppState extends State<CommerceApp> {
-  
-
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Commerce',
-      initialRoute: '/',
-      routes: {
-        '/': (context) => const HomePage(),
-        '/login': (context) => const LogInPage(),
-        '/register': (context) => const RegisterPage(),
-        ItemCard.routeName: (context) => const ItemCard(),
-      },
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primaryColor: Colors.white,
-        brightness: Brightness.light,
-        textTheme: TextTheme(
-          bodySmall: TextStyle(color: Colors.grey[700]),
-          labelLarge: TextStyle(
-            fontSize: 17,
-          ),
-          labelMedium: TextStyle(
-            color: Colors.grey[700],
-            fontSize: 14,
+    return ChangeNotifierProvider(
+      create: (context) => ProductsData(),
+      child: MaterialApp(
+        title: 'Commerce',
+        initialRoute: '/',
+        routes: {
+          '/': (context) => const HomePage(),
+          '/login': (context) => const LogInPage(),
+          '/register': (context) => const RegisterPage(),
+          ItemCard.routeName: (context) => const ItemCard(),
+        },
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          primaryColor: Colors.white,
+          brightness: Brightness.light,
+          textTheme: TextTheme(
+            bodySmall: TextStyle(color: Colors.grey[700]),
+            labelLarge: TextStyle(
+              fontSize: 17,
+            ),
+            labelMedium: TextStyle(
+              color: Colors.grey[700],
+              fontSize: 14,
+            ),
           ),
         ),
       ),

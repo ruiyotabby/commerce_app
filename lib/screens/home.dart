@@ -7,6 +7,8 @@ import 'package:commerce_app/widgets/cards.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../models/products.dart';
+
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
@@ -218,7 +220,13 @@ class HomeTabs extends StatelessWidget {
               Container(
                 padding: const EdgeInsets.only(top: 10),
                 color: Colors.grey[200],
-                child: const CardsGrid(),
+                child: Consumer<ProductsData>(
+                  builder: (context, value, child) {
+                    return value.list.isEmpty
+                        ? const CircularProgressIndicator()
+                        : CardsGrid();
+                  },
+                ),
               ),
             ],
           ),

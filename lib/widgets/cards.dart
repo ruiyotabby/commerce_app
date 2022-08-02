@@ -6,92 +6,100 @@ import 'package:provider/provider.dart';
 class CardsGrid extends StatefulWidget {
   const CardsGrid({Key? key}) : super(key: key);
 
+  
+
   @override
   State<CardsGrid> createState() => _CardsGridState();
 }
 
+
 class _CardsGridState extends State<CardsGrid> {
+
+
   @override
   Widget build(BuildContext context) {
-    // final productProvider = Provider.of<getDataProvider>(context);
-
-    return GridView.builder(
-      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 2,
-        childAspectRatio: 11 / 16.8,
-      ),
-      shrinkWrap: true,
-      itemCount: 10,
-      physics: const NeverScrollableScrollPhysics(),
-      itemBuilder: (context, index) {
-        return GestureDetector(
-          onTap: () {
-            setState(() {
-              Navigator.pushNamed(context, ItemCard.routeName);
-            });
-          },
-          child: Card(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Image.asset('assets/images/images (40).jpeg',
-                    fit: BoxFit.contain),
-                Text(
-                  ' tyfdytedty',
-                  overflow: TextOverflow.ellipsis,
-                  style: TextStyle(color: Colors.grey[700]),
-                ),
-                const Text(
-                  " Ksh 0000",
-                  style: TextStyle(fontSize: 20),
-                ),
-                Row(
-                  mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    return Consumer<ProductsData>(
+      builder: (context, value, child) {
+        return GridView.builder(
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2,
+            childAspectRatio: 11 / 16.8,
+          ),
+          shrinkWrap: true,
+          itemCount: value.list.length,
+          physics: const NeverScrollableScrollPhysics(),
+          itemBuilder: (context, index) {
+            return GestureDetector(
+              onTap: () {
+                setState(() {
+                  Navigator.pushNamed(context, ItemCard.routeName);
+                });
+              },
+              child: Card(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    Image.network(value.responseData.image![index],
+                        fit: BoxFit.contain),
+                    Text(
+                      value.responseData.title
+                      ![index],
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(color: Colors.grey[700]),
+                    ),
+                     Text(
+                      value.responseData.price.toString()[index],
+                      style: TextStyle(fontSize: 20),
+                    ),
                     Row(
                       mainAxisSize: MainAxisSize.min,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Icon(
-                          Icons.star,
-                          size: 15,
-                          color: Colors.orange[900],
+                        Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Icon(
+                              Icons.star,
+                              size: 15,
+                              color: Colors.orange[900],
+                            ),
+                            Icon(
+                              Icons.star,
+                              size: 15,
+                              color: Colors.orange[900],
+                            ),
+                            Icon(
+                              Icons.star,
+                              size: 15,
+                              color: Colors.orange[900],
+                            ),
+                            Icon(
+                              Icons.star,
+                              size: 15,
+                              color: Colors.orange[900],
+                            ),
+                            Icon(
+                              Icons.star_half,
+                              size: 15,
+                              color: Colors.orange[900],
+                            ),
+                            Text(
+                              '(000)',
+                              style: TextStyle(color: Colors.grey[700]),
+                            )
+                          ],
                         ),
-                        Icon(
-                          Icons.star,
-                          size: 15,
-                          color: Colors.orange[900],
-                        ),
-                        Icon(
-                          Icons.star,
-                          size: 15,
-                          color: Colors.orange[900],
-                        ),
-                        Icon(
-                          Icons.star,
-                          size: 15,
-                          color: Colors.orange[900],
-                        ),
-                        Icon(
-                          Icons.star_half,
-                          size: 15,
-                          color: Colors.orange[900],
-                        ),
-                        Text(
-                          '(000)',
-                          style: TextStyle(color: Colors.grey[700]),
+                        IconButton(
+                          icon: const Icon(Icons.favorite_outline),
+                          onPressed: () {},
                         )
                       ],
-                    ),
-                    IconButton(
-                      icon: const Icon(Icons.favorite_outline),
-                      onPressed: () {},
                     )
                   ],
-                )
-              ],
-            ),
-          ),
+                ),
+              ),
+            );
+          },
         );
       },
     );
