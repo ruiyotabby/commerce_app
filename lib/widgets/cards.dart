@@ -1,4 +1,7 @@
+import 'package:commerce_app/models/products.dart';
+import 'package:commerce_app/services/get_data.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class CardsGrid extends StatefulWidget {
   const CardsGrid({Key? key}) : super(key: key);
@@ -10,13 +13,18 @@ class CardsGrid extends StatefulWidget {
 class _CardsGridState extends State<CardsGrid> {
   @override
   Widget build(BuildContext context) {
-    return GridView.count(
-      childAspectRatio: 11 / 17,
+    // final productProvider = Provider.of<getDataProvider>(context);
+
+    return GridView.builder(
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 2,
+        childAspectRatio: 11 / 16.8,
+      ),
       shrinkWrap: true,
+      itemCount: 10,
       physics: const NeverScrollableScrollPhysics(),
-      crossAxisCount: 2,
-      children: [
-        GestureDetector(
+      itemBuilder: (context, index) {
+        return GestureDetector(
           onTap: () {
             setState(() {
               Navigator.pushNamed(context, ItemCard.routeName);
@@ -26,14 +34,15 @@ class _CardsGridState extends State<CardsGrid> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Image.asset('assets/images/images (50).jpeg', fit: BoxFit.fill),
+                Image.asset('assets/images/images (40).jpeg',
+                    fit: BoxFit.contain),
                 Text(
-                  'Name of the item',
+                  ' tyfdytedty',
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(color: Colors.grey[700]),
                 ),
                 const Text(
-                  "Ksh 0000",
+                  " Ksh 0000",
                   style: TextStyle(fontSize: 20),
                 ),
                 Row(
@@ -83,8 +92,8 @@ class _CardsGridState extends State<CardsGrid> {
               ],
             ),
           ),
-        ),
-      ],
+        );
+      },
     );
   }
 }

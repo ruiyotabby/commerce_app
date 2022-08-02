@@ -1,16 +1,30 @@
 import 'package:commerce_app/screens/home.dart';
 import 'package:commerce_app/screens/login.dart';
 import 'package:commerce_app/screens/register.dart';
+import 'package:commerce_app/services/get_data.dart';
 import 'package:commerce_app/widgets/cards.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-class CommerceApp extends StatelessWidget {
+class CommerceApp extends StatefulWidget {
   const CommerceApp({Key? key}) : super(key: key);
 
-  static double? global;
+  @override
+  State<CommerceApp> createState() => _CommerceAppState();
+}
+
+class _CommerceAppState extends State<CommerceApp> {
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   final productProvider =
+  //       Provider.of<getDataProvider>(context, listen: false);
+  //   productProvider.getData();
+  // }
 
   @override
   Widget build(BuildContext context) {
+    // final productProvider = Provider.of<getDataProvider>(context);
     return MaterialApp(
       title: 'Commerce',
       initialRoute: '/',

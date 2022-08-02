@@ -2,8 +2,10 @@ import 'package:commerce_app/screens/account.dart';
 import 'package:commerce_app/screens/cart.dart';
 import 'package:commerce_app/screens/category.dart';
 import 'package:commerce_app/screens/message.dart';
+import 'package:commerce_app/services/get_data.dart';
 import 'package:commerce_app/widgets/cards.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -13,6 +15,14 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   final productProvider =
+  //       Provider.of<getDataProvider>(context, listen: false);
+  //   productProvider.getData();
+  // }
+
   int pageIndex = 0;
 
   final screens = [

@@ -5,31 +5,31 @@ import 'package:commerce_app/models/products.dart';
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 
-class getDataProvider extends ChangeNotifier {
-  Products productsdata = const Products();
-  bool isLoading = false;
+// class getDataProvider extends ChangeNotifier {
+//   Products productsdata = const Products();
+//   bool isLoading = false;
 
-  getData() async {
-    isLoading = true;
-    productsdata = await fetchProducts();
-    isLoading = false;
-    notifyListeners();
-  }
+//   getData() async {
+//     isLoading = true;
+//     productsdata = await fetchProducts();
+//     isLoading = false;
+//     notifyListeners();
+//   }
 
-  Future<Products> fetchProducts() async {
-    try {
+  Future<Products> fetchProducts(http.Client client) async {
+    // try {
       final response =
-          await http.get(Uri.parse('https://fakestoreapi.com/products'));
+          await client.get(Uri.parse('https://fakestoreapi.com/products'));
 
       if (response.statusCode == 200) {
-        productsdata = Products.fromJson(jsonDecode(response.body));
-        notifyListeners();
+        return Products.fromJson(jsonDecode(response.body));
+        // notifyListeners();
       } else {
-        throw Exception();
+        throw Exception('Failed');
       }
-    } catch (e) {
-      log(e.toString());
-    }
-    return productsdata;
+    // } catch (e) {
+    //   log(e.toString());
+    // }
+    // return productsdata;
   }
-}
+// }

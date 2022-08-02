@@ -8,13 +8,13 @@ class Products {
   final Rating? rating;
 
   const Products({
-     this.id,
-     this.title,
-     this.description,
-     this.category,
-     this.rating,
-     this.image,
-     this.price,
+    this.id,
+    this.title,
+    this.description,
+    this.category,
+    this.rating,
+    this.image,
+    this.price,
   });
 
   factory Products.fromJson(Map<String, dynamic> json) {
@@ -35,8 +35,8 @@ class Rating {
   final int? count;
 
   const Rating({
-     this.rate,
-     this.count,
+    this.rate,
+    this.count,
   });
 
   factory Rating.fromJson(Map<String, dynamic> json) {
