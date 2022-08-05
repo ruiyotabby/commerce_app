@@ -1,6 +1,4 @@
-import 'package:commerce_app/services/get_data.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 import 'app.dart';
 
@@ -11,6 +9,6 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CommerceApp();
+    return const CommerceApp();
   }
 }
