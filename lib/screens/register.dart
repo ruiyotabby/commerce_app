@@ -53,14 +53,14 @@ class RegisterPage extends StatelessWidget {
       children: [
         Column(
           children: [
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             TextFormField(
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 prefixIcon: Icon(Icons.mail_outline),
                 hintText: 'Enter your email',
               ),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             TextFormField(
               decoration: InputDecoration(
                 prefixIcon: Icon(Icons.lock_outline),
@@ -126,7 +126,7 @@ class RegisterPage extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text('Have an Account?'),
+                 Text('Have an Account?'),
                 SizedBox(width: 5),
                 TextButton(onPressed: () {}, child: Text('Login'))
               ],
