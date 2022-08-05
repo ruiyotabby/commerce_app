@@ -25,7 +25,7 @@ class _CommerceAppState extends State<CommerceApp> {
           '/': (context) => const HomePage(),
           '/login': (context) => const LogInPage(),
           '/register': (context) => const RegisterPage(),
-          ItemCard.routeName: (context) => const ItemCard(),
+          ItemCard.routeName: (context) =>  ItemCard(),
         },
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
