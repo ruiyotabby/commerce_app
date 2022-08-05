@@ -1,105 +1,103 @@
 import 'package:commerce_app/models/products.dart';
-import 'package:commerce_app/services/get_data.dart';
+import 'package:commerce_app/services/fetch_products.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:provider/single_child_widget.dart';
 
 class CardsGrid extends StatefulWidget {
-  const CardsGrid({Key? key}) : super(key: key);
-
-  
+  const CardsGrid({
+    Key? key,
+  }) : super(key: key);
 
   @override
   State<CardsGrid> createState() => _CardsGridState();
 }
 
-
 class _CardsGridState extends State<CardsGrid> {
-
-
   @override
   Widget build(BuildContext context) {
-    return Consumer<ProductsData>(
-      builder: (context, value, child) {
-        return GridView.builder(
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2,
-            childAspectRatio: 11 / 16.8,
-          ),
-          shrinkWrap: true,
-          itemCount: value.list.length,
-          physics: const NeverScrollableScrollPhysics(),
-          itemBuilder: (context, index) {
-            return GestureDetector(
-              onTap: () {
-                setState(() {
-                  Navigator.pushNamed(context, ItemCard.routeName);
-                });
-              },
-              child: Card(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+    final data = Provider.of<ProductsData>(context, listen: false);
+    return GridView.builder(
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 2,
+        childAspectRatio: 11 / 20,
+      ),
+      shrinkWrap: true,
+      itemCount: data.map.length,
+      physics: const NeverScrollableScrollPhysics(),
+      itemBuilder: (context, index) {
+        return GestureDetector(
+          onTap: () {
+            setState(() {
+              Navigator.pushNamed(context, ItemCard.routeName,
+                  arguments: [data, index]);
+            });
+          },
+          child: Card(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Image.network(
+                  data.map[index].image,
+                  fit: BoxFit.fill,
+                  height: MediaQuery.of(context).size.height * 0.35,
+                ),
+                Text(
+                  data.map[index].title,
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(color: Colors.grey[700]),
+                ),
+                Text(
+                  data.map[index].price.toString(),
+                  style: const TextStyle(fontSize: 20),
+                ),
+                Row(
+                  mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Image.network(value.responseData.image![index],
-                        fit: BoxFit.contain),
-                    Text(
-                      value.responseData.title
-                      ![index],
-                      overflow: TextOverflow.ellipsis,
-                      style: TextStyle(color: Colors.grey[700]),
-                    ),
-                     Text(
-                      value.responseData.price.toString()[index],
-                      style: TextStyle(fontSize: 20),
-                    ),
                     Row(
                       mainAxisSize: MainAxisSize.min,
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Icon(
-                              Icons.star,
-                              size: 15,
-                              color: Colors.orange[900],
-                            ),
-                            Icon(
-                              Icons.star,
-                              size: 15,
-                              color: Colors.orange[900],
-                            ),
-                            Icon(
-                              Icons.star,
-                              size: 15,
-                              color: Colors.orange[900],
-                            ),
-                            Icon(
-                              Icons.star,
-                              size: 15,
-                              color: Colors.orange[900],
-                            ),
-                            Icon(
-                              Icons.star_half,
-                              size: 15,
-                              color: Colors.orange[900],
-                            ),
-                            Text(
-                              '(000)',
-                              style: TextStyle(color: Colors.grey[700]),
-                            )
-                          ],
+                        Icon(
+                          Icons.star,
+                          size: 15,
+                          color: Colors.orange[900],
                         ),
-                        IconButton(
-                          icon: const Icon(Icons.favorite_outline),
-                          onPressed: () {},
+                        Icon(
+                          Icons.star,
+                          size: 15,
+                          color: Colors.orange[900],
+                        ),
+                        Icon(
+                          Icons.star,
+                          size: 15,
+                          color: Colors.orange[900],
+                        ),
+                        Icon(
+                          Icons.star,
+                          size: 15,
+                          color: Colors.orange[900],
+                        ),
+                        Icon(
+                          Icons.star_half,
+                          size: 15,
+                          color: Colors.orange[900],
+                        ),
+                        Text(
+                          '(000)',
+                          style: TextStyle(color: Colors.grey[700]),
                         )
                       ],
+                    ),
+                    IconButton(
+                      icon: const Icon(Icons.favorite_outline),
+                      onPressed: () {},
                     )
                   ],
-                ),
-              ),
-            );
-          },
+                )
+              ],
+            ),
+          ),
         );
       },
     );
@@ -134,7 +132,7 @@ class GridViewWidget extends StatelessWidget {
             Container(
               padding: const EdgeInsets.all(6),
               color: Colors.grey[200],
-              child: const CardsGrid(),
+              child: CardsGrid(),
             )
           ],
         ),
@@ -162,9 +160,13 @@ class GridViewWidget extends StatelessWidget {
 }
 
 class ItemCard extends StatefulWidget {
-  const ItemCard({Key? key}) : super(key: key);
+  const ItemCard({Key? key, required this.data, required this.index})
+      : super(key: key);
 
   static String routeName = '/item_page';
+
+  final data;
+  final index;
 
   @override
   State<ItemCard> createState() => _ItemCardState();
@@ -556,7 +558,7 @@ class _ItemCardState extends State<ItemCard> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Image.asset(
-                  'assets/images/images (38).jpeg',
+                  '${widget.data.map[widget.index].image}',
                   fit: BoxFit.contain,
                 ),
                 productCard,
@@ -572,7 +574,7 @@ class _ItemCardState extends State<ItemCard> {
                   padding: const EdgeInsets.all(8.0),
                   child: Text('You may also like'),
                 ),
-                CardsGrid()
+                // CardsGrid()
               ],
             ),
           ],
