@@ -30,7 +30,7 @@ class _CardsGridState extends State<CardsGrid> {
           onTap: () {
             setState(() {
               Navigator.pushNamed(context, ItemCard.routeName,
-                  arguments: [data, index]);
+                  arguments: ScreenArguments(data: data, index: index));
             });
           },
           child: Card(
@@ -159,14 +159,17 @@ class GridViewWidget extends StatelessWidget {
   }
 }
 
-class ItemCard extends StatefulWidget {
-  const ItemCard({Key? key, required this.data, required this.index})
-      : super(key: key);
-
-  static String routeName = '/item_page';
-
+class ScreenArguments {
   final data;
   final index;
+
+  const ScreenArguments({this.data, this.index});
+}
+
+class ItemCard extends StatefulWidget {
+  const ItemCard({Key? key}) : super(key: key);
+
+  static String routeName = '/item_page';
 
   @override
   State<ItemCard> createState() => _ItemCardState();
@@ -179,6 +182,8 @@ class _ItemCardState extends State<ItemCard> {
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
+
+    final args = ModalRoute.of(context)!.settings.arguments as ScreenArguments;
 
     Widget bottomRow() {
       return Row(
@@ -558,7 +563,7 @@ class _ItemCardState extends State<ItemCard> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Image.asset(
-                  '${widget.data.map[widget.index].image}',
+                  '${args.data.map[args.index].image}',
                   fit: BoxFit.contain,
                 ),
                 productCard,
