@@ -1,8 +1,7 @@
-import 'package:commerce_app/models/products.dart';
 import 'package:commerce_app/screens/home.dart';
 import 'package:commerce_app/screens/login.dart';
 import 'package:commerce_app/screens/register.dart';
-import 'package:commerce_app/services/get_data.dart';
+import 'package:commerce_app/services/fetch_products.dart';
 import 'package:commerce_app/widgets/cards.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -17,7 +16,7 @@ class CommerceApp extends StatefulWidget {
 class _CommerceAppState extends State<CommerceApp> {
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
+    return ChangeNotifierProvider<ProductsData>(
       create: (context) => ProductsData(),
       child: MaterialApp(
         title: 'Commerce',
@@ -34,7 +33,7 @@ class _CommerceAppState extends State<CommerceApp> {
           brightness: Brightness.light,
           textTheme: TextTheme(
             bodySmall: TextStyle(color: Colors.grey[700]),
-            labelLarge: TextStyle(
+            labelLarge: const TextStyle(
               fontSize: 17,
             ),
             labelMedium: TextStyle(
