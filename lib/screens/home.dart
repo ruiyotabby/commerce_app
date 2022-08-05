@@ -1,13 +1,14 @@
+import 'package:commerce_app/models/products.dart';
 import 'package:commerce_app/screens/account.dart';
 import 'package:commerce_app/screens/cart.dart';
 import 'package:commerce_app/screens/category.dart';
 import 'package:commerce_app/screens/message.dart';
-import 'package:commerce_app/services/get_data.dart';
+import 'package:commerce_app/services/fetch_products.dart';
 import 'package:commerce_app/widgets/cards.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
-import '../models/products.dart';
+import 'package:http/http.dart' as http;
+import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -222,9 +223,20 @@ class HomeTabs extends StatelessWidget {
                 color: Colors.grey[200],
                 child: Consumer<ProductsData>(
                   builder: (context, value, child) {
-                    return value.list.isEmpty
-                        ? const CircularProgressIndicator()
-                        : CardsGrid();
+                    // 
+                    // value.fetchProducts(http.Client());
+                    // 
+                    if (value.isErr == true) {
+                      return Center(
+                        child: Text(value.errMessage),
+                      );
+                    } else if (value.map != null) {
+                      return const CardsGrid();
+                    } else {
+                      return const Center(
+                        child: CircularProgressIndicator(),
+                      );
+                    }
                   },
                 ),
               ),
