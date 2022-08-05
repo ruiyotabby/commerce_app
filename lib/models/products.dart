@@ -1,56 +1,56 @@
-import 'dart:convert';
+// import 'dart:convert';
 
 // List<Products> productsFromJson(String str) =>
-// List<Products>.from(json.decode(str).map((x) => Products.fromJson(x)));
+//     List<Products>.from(json.decode(str).map((x) => Products.fromJson(x)));
 
 // String productsToJson(List<Products> data) =>
 //     json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
 class Products {
-  final int? id;
-  final String? title;
-  final double? price;
-  final String? description;
-  final String? category;
-  final String? image;
-  final Rating? rating;
+  final int id;
+  final String title;
+  final num price;
+  final String description;
+  final String category;
+  final String image;
+  final Rating rating;
 
   const Products({
-    this.id,
-    this.title,
-    this.description,
-    this.category,
-    this.rating,
-    this.image,
-    this.price,
+    required this.id,
+    required this.title,
+    required this.description,
+    required this.category,
+    required this.rating,
+    required this.image,
+    required this.price,
   });
 
   factory Products.fromJson(Map<String, dynamic> json) {
     return Products(
-      id: json['id'],
-      title: json['title'],
-      description: json['description'],
-      category: json['category'],
-      image: json['image'],
+      id: json['id'] as int,
+      title: json['title'] as String,
+      description: json['description'] as String,
+      category: json['category'] as String,
+      image: json['image'] as String,
       rating: Rating.fromJson(json['rating']),
-      price: json['price'],
+      price: json['price'] as num,
     );
   }
 }
 
 class Rating {
-  final double? rate;
-  final int? count;
+  final num rate;
+  final int count;
 
   const Rating({
-    this.rate,
-    this.count,
+    required this.rate,
+    required this.count,
   });
 
   factory Rating.fromJson(Map<String, dynamic> json) {
     return Rating(
-      rate: json['rate'].toDouble(),
-      count: json['count'].toInt(),
+      rate: json['rate'] as num,
+      count: json['count'] as int,
     );
   }
 }
