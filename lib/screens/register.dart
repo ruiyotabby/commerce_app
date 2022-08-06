@@ -28,9 +28,9 @@ class RegisterPage extends StatelessWidget {
                   indicatorSize: TabBarIndicatorSize.label,
                   indicatorWeight: 3,
                   tabs: const [
-                    Text('Login',
-                        style: TextStyle(fontWeight: FontWeight.w300)),
                     Text('Register',
+                        style: TextStyle(fontWeight: FontWeight.w300)),
+                    Text('Login',
                         style: TextStyle(fontWeight: FontWeight.w300)),
                   ],
                 ),
@@ -38,8 +38,8 @@ class RegisterPage extends StatelessWidget {
           body: Center(
             child: TabBarView(
               children: [
-                loginTab(),
                 registerTab(width, height),
+                loginTab(),
               ],
             ),
           )),
@@ -54,6 +54,7 @@ class RegisterPage extends StatelessWidget {
         Column(
           children: [
             const SizedBox(height: 20),
+
             TextFormField(
               decoration: const InputDecoration(
                 prefixIcon: Icon(Icons.mail_outline),
@@ -62,22 +63,31 @@ class RegisterPage extends StatelessWidget {
             ),
             const SizedBox(height: 20),
             TextFormField(
+              obscureText: true,
               decoration: InputDecoration(
                 prefixIcon: const Icon(Icons.lock_outline),
                 hintText: 'Set your password',
                 suffixIcon: IconButton(
-                  icon: const Icon(Icons.remove_red_eye_outlined),
+                  icon: const Icon(Icons.remove_red_eye),
                   onPressed: () {},
                 ),
               ),
             ),
             const SizedBox(height: 10),
-            TextFormField(
-              decoration: InputDecoration(
-                isDense: true,
-                prefixIcon: const Icon(Icons.message_outlined),
-                hintText: 'Enter Email Code',
-                suffix: OutlinedButton(
+            Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Expanded(
+                  child: TextFormField(
+                    keyboardType: TextInputType.number,
+                    decoration: const InputDecoration(
+                      isDense: true,
+                      prefixIcon: Icon(Icons.message_outlined),
+                      hintText: 'Enter Email Code',
+                    ),
+                  ),
+                ),
+                OutlinedButton(
                   style: OutlinedButton.styleFrom(
                     primary: Colors.red,
                     side: const BorderSide(color: Colors.red),
@@ -88,7 +98,7 @@ class RegisterPage extends StatelessWidget {
                   onPressed: () {},
                   child: const Text('Send'),
                 ),
-              ),
+              ],
             ),
             // Code to write
             //    Ask whether to register as a buyer or seller?
@@ -126,9 +136,12 @@ class RegisterPage extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                 const Text('Have an Account?'),
+                const Text('Have an Account?'),
                 const SizedBox(width: 5),
-                TextButton(onPressed: () {}, child: const Text('Login'))
+                TextButton(
+                  onPressed: () {},
+                  child: const Text('Login'),
+                )
               ],
             )
           ],
