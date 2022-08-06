@@ -1,8 +1,6 @@
-import 'package:commerce_app/models/products.dart';
 import 'package:commerce_app/services/fetch_products.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:provider/single_child_widget.dart';
 
 class CardsGrid extends StatefulWidget {
   const CardsGrid({
@@ -132,7 +130,7 @@ class GridViewWidget extends StatelessWidget {
             Container(
               padding: const EdgeInsets.all(6),
               color: Colors.grey[200],
-              child: CardsGrid(),
+              child: const CardsGrid(),
             )
           ],
         ),
@@ -196,11 +194,11 @@ class _ItemCardState extends State<ItemCard> {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 GestureDetector(
-                    onTap: () {}, child: Icon(Icons.message_outlined)),
+                    onTap: () {}, child: const Icon(Icons.message_outlined)),
                 GestureDetector(
-                    onTap: () {}, child: Icon(Icons.favorite_border)),
+                    onTap: () {}, child: const Icon(Icons.favorite_border)),
                 GestureDetector(
-                    onTap: () {}, child: Icon(Icons.shopping_cart_outlined)),
+                    onTap: () {}, child: const Icon(Icons.shopping_cart_outlined)),
               ],
             ),
           ),
@@ -213,15 +211,15 @@ class _ItemCardState extends State<ItemCard> {
                     bottomSheet(context, width, height);
                   });
                 },
-                child: Text('Add to Cart'),
                 style: OutlinedButton.styleFrom(
-                  shape: RoundedRectangleBorder(
+                  shape: const RoundedRectangleBorder(
                       borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(69),
                           bottomLeft: Radius.circular(69))),
                   primary: Colors.red,
-                  side: BorderSide(color: Colors.red, width: 2),
+                  side: const BorderSide(color: Colors.red, width: 2),
                 ),
+                child: const Text('Add to Cart'),
               ),
               ElevatedButton(
                 onPressed: () {
@@ -237,7 +235,7 @@ class _ItemCardState extends State<ItemCard> {
                   ),
                   primary: Colors.red,
                 ),
-                child: Text('Order Now'),
+                child: const Text('Order Now'),
               ),
             ],
           ),
@@ -255,7 +253,7 @@ class _ItemCardState extends State<ItemCard> {
         child: TextField(
           enabled: false,
           decoration: InputDecoration(
-            prefixIcon: Icon(Icons.search, size: 30),
+            prefixIcon: const Icon(Icons.search, size: 30),
             labelText: 'Search products',
             filled: true,
             fillColor: Colors.grey[200],
@@ -264,8 +262,8 @@ class _ItemCardState extends State<ItemCard> {
         ),
       ),
       actions: [
-        IconButton(onPressed: () {}, icon: Icon(Icons.share)),
-        IconButton(onPressed: () {}, icon: Icon(Icons.menu)),
+        IconButton(onPressed: () {}, icon: const Icon(Icons.share)),
+        IconButton(onPressed: () {}, icon: const Icon(Icons.menu)),
       ],
     );
     Widget productCard = Card(
@@ -276,7 +274,7 @@ class _ItemCardState extends State<ItemCard> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             // SizedBox(height: height * 0.03),
-            Text(
+            const Text(
               'KSh 790',
               style: TextStyle(
                 fontSize: 20,
@@ -324,8 +322,8 @@ class _ItemCardState extends State<ItemCard> {
                       color: Colors.orange[900],
                     ),
                     SizedBox(width: width * 0.02),
-                    Text('4.6'),
-                    VerticalDivider(thickness: 1.5),
+                    const Text('4.6'),
+                    const VerticalDivider(thickness: 1.5),
                     // SizedBox(width: width * 0.03),
                     Text(
                       'Reviews(12)',
@@ -335,12 +333,12 @@ class _ItemCardState extends State<ItemCard> {
                 ),
               ),
             ),
-            Divider(height: 13),
+            const Divider(height: 13),
             SizedBox(height: height * 0.01),
             GestureDetector(
               onTap: () {},
               child: Row(
-                children: [
+                children: const [
                   Text(
                     'Color: Black/Size: 15 inch',
                     style: TextStyle(fontSize: 18),
@@ -372,7 +370,7 @@ class _ItemCardState extends State<ItemCard> {
                       'Nairobi, Central Business District',
                       style: Theme.of(context).textTheme.labelMedium,
                     ),
-                    Icon(
+                    const Icon(
                       Icons.navigate_next,
                     ),
                   ],
@@ -419,14 +417,14 @@ class _ItemCardState extends State<ItemCard> {
                         'View All',
                         style: Theme.of(context).textTheme.labelMedium,
                       ),
-                      Icon(Icons.navigate_next),
+                      const Icon(Icons.navigate_next),
                     ],
                   ),
                 )
               ],
             ),
-            Divider(thickness: 1),
-            ListTile(title: Text('No reviews yet')),
+            const Divider(thickness: 1),
+            const ListTile(title: Text('No reviews yet')),
           ],
         ),
       ),
@@ -446,7 +444,7 @@ class _ItemCardState extends State<ItemCard> {
                       width: width * 0.1,
                       child: Image.network('src', fit: BoxFit.contain),
                     ),
-                    SizedBox(width: 10),
+                    const SizedBox(width: 10),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -464,11 +462,11 @@ class _ItemCardState extends State<ItemCard> {
                 ),
                 ElevatedButton(
                   onPressed: () {},
-                  child: Text('Visit Store'),
                   style: ElevatedButton.styleFrom(
                       primary: Colors.red,
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(69))),
+                  child: const Text('Visit Store'),
                 ),
               ],
             ),
@@ -490,7 +488,7 @@ class _ItemCardState extends State<ItemCard> {
                         ),
                       ],
                     ),
-                    VerticalDivider(thickness: 1.5),
+                    const VerticalDivider(thickness: 1.5),
                     Column(
                       children: [
                         Text(
@@ -503,7 +501,7 @@ class _ItemCardState extends State<ItemCard> {
                         ),
                       ],
                     ),
-                    VerticalDivider(thickness: 1.5),
+                    const VerticalDivider(thickness: 1.5),
                     Column(
                       children: [
                         Text(
@@ -525,12 +523,12 @@ class _ItemCardState extends State<ItemCard> {
               children: [
                 OutlinedButton(
                   onPressed: () {},
-                  child: Text('Chat with this seller'),
                   style: OutlinedButton.styleFrom(
-                      backgroundColor: Color.fromARGB(255, 255, 225, 222),
+                      backgroundColor: const Color.fromARGB(255, 255, 225, 222),
                       primary: Colors.red[700],
-                      side: BorderSide(color: Colors.red),
+                      side: const BorderSide(color: Colors.red),
                       fixedSize: Size(width * 0.51, height * 0.01)),
+                  child: const Text('Chat with this seller'),
                 )
               ],
             )
@@ -544,7 +542,7 @@ class _ItemCardState extends State<ItemCard> {
           Padding(
             padding: const EdgeInsets.only(top: 10, bottom: 14, left: 5),
             child: Row(
-              children: [
+              children: const [
                 Text('Product Descriprion'),
               ],
             ),
@@ -575,8 +573,8 @@ class _ItemCardState extends State<ItemCard> {
                 sellerCard,
                 SizedBox(height: height * 0.01),
                 descriptionCard,
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
+                const Padding(
+                  padding: EdgeInsets.all(8.0),
                   child: Text('You may also like'),
                 ),
                 // CardsGrid()
@@ -612,7 +610,7 @@ class _ItemCardState extends State<ItemCard> {
                                 }
                               });
                             },
-                            child: Icon(Icons.remove)),
+                            child: const Icon(Icons.remove)),
                       ],
                     ),
                     SizedBox(width: width * 0.02),
@@ -630,7 +628,7 @@ class _ItemCardState extends State<ItemCard> {
                               _num++;
                             });
                           },
-                          child: Icon(Icons.add),
+                          child: const Icon(Icons.add),
                         ),
                       ],
                     )
