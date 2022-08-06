@@ -63,10 +63,10 @@ class RegisterPage extends StatelessWidget {
             const SizedBox(height: 20),
             TextFormField(
               decoration: InputDecoration(
-                prefixIcon: Icon(Icons.lock_outline),
+                prefixIcon: const Icon(Icons.lock_outline),
                 hintText: 'Set your password',
                 suffixIcon: IconButton(
-                  icon: Icon(Icons.remove_red_eye_outlined),
+                  icon: const Icon(Icons.remove_red_eye_outlined),
                   onPressed: () {},
                 ),
               ),
@@ -86,7 +86,7 @@ class RegisterPage extends StatelessWidget {
                         borderRadius: BorderRadius.circular(80)),
                   ),
                   onPressed: () {},
-                  child: Text('Send'),
+                  child: const Text('Send'),
                 ),
               ),
             ),
@@ -101,7 +101,7 @@ class RegisterPage extends StatelessWidget {
                 iconColor: Colors.white,
                 label: 'Create Account',
                 textColor: Colors.white),
-            SizedBox(height: 30),
+            const SizedBox(height: 30),
             Row(
               children: const [
                 Expanded(child: Divider(thickness: 1, endIndent: 13)),
@@ -109,14 +109,14 @@ class RegisterPage extends StatelessWidget {
                 Expanded(child: Divider(thickness: 1, indent: 13)),
               ],
             ),
-            SizedBox(height: 12),
+            const SizedBox(height: 12),
             LoginButtons(
                 buttonColor: Colors.grey[200],
                 icon: Icons.camera,
                 iconColor: Colors.green,
                 label: 'Register via Google',
                 textColor: Colors.black),
-            SizedBox(height: 5),
+            const SizedBox(height: 5),
             LoginButtons(
                 buttonColor: Colors.blue[900],
                 icon: Icons.facebook_outlined,
@@ -126,9 +126,9 @@ class RegisterPage extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                 Text('Have an Account?'),
-                SizedBox(width: 5),
-                TextButton(onPressed: () {}, child: Text('Login'))
+                 const Text('Have an Account?'),
+                const SizedBox(width: 5),
+                TextButton(onPressed: () {}, child: const Text('Login'))
               ],
             )
           ],
