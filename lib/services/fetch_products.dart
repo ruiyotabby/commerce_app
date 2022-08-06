@@ -4,7 +4,6 @@ import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 
 import 'package:commerce_app/models/products.dart';
-import 'package:provider/provider.dart';
 
 class ProductsData with ChangeNotifier {
   var map;
