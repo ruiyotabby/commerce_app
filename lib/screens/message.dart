@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 class MessagePage extends StatelessWidget {
@@ -26,8 +25,8 @@ class MessagePage extends StatelessWidget {
             children: [
               ListTile(
                 tileColor: Colors.white,
-                leading:
-                    const Icon(Icons.help_center, size: 40, color: Colors.purple),
+                leading: const Icon(Icons.help_center,
+                    size: 40, color: Colors.purple),
                 title: const Text('Contact Us'),
                 subtitle: const Text('Describe your quesry'),
                 trailing: const Icon(Icons.navigate_next, size: 35),
@@ -62,9 +61,7 @@ class MessagePage extends StatelessWidget {
 }
 
 class MessageTiles extends StatelessWidget {
-  const MessageTiles({
-    Key? key,
-  }) : super(key: key);
+  const MessageTiles({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -72,10 +69,15 @@ class MessageTiles extends StatelessWidget {
       children: [
         _tiles('1', Icons.volume_up, Colors.yellow, 'Notifications',
             'No notification yet'),
-        _tiles('2', Icons.edit_note, Colors.green, 'Notifications',
-            'No notification yet'),
-        _tiles('3', Icons.discount, Colors.deepOrange, 'Notifications',
-            'No notification yet'),
+        _tiles('2', Icons.edit_note, Colors.green, 'Order Updates',
+            'No order updates notice yet'),
+        _tiles('3', Icons.discount, Colors.deepOrange, 'Promotions',
+            'No promotions notice yet'),
+        _tiles('4', Icons.account_box, Colors.purple, 'Followers',
+            'No following notice yet'),
+        _tiles('5', Icons.favorite, Colors.red, 'Likes', 'No likes notice yet'),
+        _tiles('6', Icons.message, Colors.blue, 'Comments',
+            'No comments notice yet')
       ],
     );
   }
