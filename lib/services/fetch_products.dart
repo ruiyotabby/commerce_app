@@ -9,7 +9,6 @@ class ProductsData with ChangeNotifier {
   var map;
   String errMessage = '';
   bool isErr = false;
-  var list;
 
   Future<List<Products>> fetchProducts(http.Client client) async {
     final response =
@@ -23,7 +22,7 @@ class ProductsData with ChangeNotifier {
     } else {
       final parsed = jsonDecode(response.body).cast<Map<String, dynamic>>();
       map = parsed.map<Products>((json) => Products.fromJson(json)).toList();
-      
+
       return parsed.map<Products>((json) => Products.fromJson(json)).toList();
     }
   }
