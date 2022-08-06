@@ -1,4 +1,3 @@
-import 'package:commerce_app/models/products.dart';
 import 'package:commerce_app/screens/account.dart';
 import 'package:commerce_app/screens/cart.dart';
 import 'package:commerce_app/screens/category.dart';
@@ -7,7 +6,6 @@ import 'package:commerce_app/services/fetch_products.dart';
 import 'package:commerce_app/widgets/cards.dart';
 import 'package:flutter/material.dart';
 
-import 'package:http/http.dart' as http;
 import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
