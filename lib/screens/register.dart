@@ -38,119 +38,20 @@ class RegisterPage extends StatelessWidget {
           body: Center(
             child: TabBarView(
               children: [
-                registerTab(width, height),
-                loginTab(),
+                RegisterTab(width: width, height: height),
+                const LoginTab(),
               ],
             ),
           )),
     );
   }
+}
 
-  Widget registerTab(double width, double height) {
-    return ListView(
-      shrinkWrap: true,
-      padding: const EdgeInsets.only(left: 20, right: 20),
-      children: [
-        Column(
-          children: [
-            const SizedBox(height: 20),
+class LoginTab extends StatelessWidget {
+  const LoginTab({Key? key}) : super(key: key);
 
-            TextFormField(
-              decoration: const InputDecoration(
-                prefixIcon: Icon(Icons.mail_outline),
-                hintText: 'Enter your email',
-              ),
-            ),
-            const SizedBox(height: 20),
-            TextFormField(
-              obscureText: true,
-              decoration: InputDecoration(
-                prefixIcon: const Icon(Icons.lock_outline),
-                hintText: 'Set your password',
-                suffixIcon: IconButton(
-                  icon: const Icon(Icons.remove_red_eye),
-                  onPressed: () {},
-                ),
-              ),
-            ),
-            const SizedBox(height: 10),
-            Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Expanded(
-                  child: TextFormField(
-                    keyboardType: TextInputType.number,
-                    decoration: const InputDecoration(
-                      isDense: true,
-                      prefixIcon: Icon(Icons.message_outlined),
-                      hintText: 'Enter Email Code',
-                    ),
-                  ),
-                ),
-                OutlinedButton(
-                  style: OutlinedButton.styleFrom(
-                    primary: Colors.red,
-                    side: const BorderSide(color: Colors.red),
-                    minimumSize: Size(width * 0.28, height * 0.05),
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(80)),
-                  ),
-                  onPressed: () {},
-                  child: const Text('Send'),
-                ),
-              ],
-            ),
-            // Code to write
-            //    Ask whether to register as a buyer or seller?
-            //
-
-            const SizedBox(height: 30),
-            const LoginButtons(
-                buttonColor: Color.fromARGB(255, 241, 33, 18),
-                icon: Icons.edit,
-                iconColor: Colors.white,
-                label: 'Create Account',
-                textColor: Colors.white),
-            const SizedBox(height: 30),
-            Row(
-              children: const [
-                Expanded(child: Divider(thickness: 1, endIndent: 13)),
-                Text('Or Connect with'),
-                Expanded(child: Divider(thickness: 1, indent: 13)),
-              ],
-            ),
-            const SizedBox(height: 12),
-            LoginButtons(
-                buttonColor: Colors.grey[200],
-                icon: Icons.camera,
-                iconColor: Colors.green,
-                label: 'Register via Google',
-                textColor: Colors.black),
-            const SizedBox(height: 5),
-            LoginButtons(
-                buttonColor: Colors.blue[900],
-                icon: Icons.facebook_outlined,
-                iconColor: Colors.white,
-                label: 'Register via Facebook',
-                textColor: Colors.white),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Text('Have an Account?'),
-                const SizedBox(width: 5),
-                TextButton(
-                  onPressed: () {},
-                  child: const Text('Login'),
-                )
-              ],
-            )
-          ],
-        ),
-      ],
-    );
-  }
-
-  Widget loginTab() {
+  @override
+  Widget build(BuildContext context) {
     return ListView(
       children: [
         Padding(
@@ -229,6 +130,125 @@ class RegisterPage extends StatelessWidget {
               )
             ],
           ),
+        ),
+      ],
+    );
+  }
+}
+
+class RegisterTab extends StatefulWidget {
+  const RegisterTab({Key? key, required this.width, required this.height})
+      : super(key: key);
+
+  final double width;
+  final double height;
+
+  @override
+  State<RegisterTab> createState() => _RegisterTabState();
+}
+
+class _RegisterTabState extends State<RegisterTab> {
+  @override
+  Widget build(BuildContext context) {
+    return ListView(
+      shrinkWrap: true,
+      padding: const EdgeInsets.only(left: 20, right: 20),
+      children: [
+        Column(
+          children: [
+            const SizedBox(height: 20),
+
+            TextFormField(
+              decoration: const InputDecoration(
+                prefixIcon: Icon(Icons.mail_outline),
+                hintText: 'Enter your email',
+              ),
+            ),
+            const SizedBox(height: 20),
+            TextFormField(
+              obscureText: true,
+              decoration: InputDecoration(
+                prefixIcon: const Icon(Icons.lock_outline),
+                hintText: 'Set your password',
+                suffixIcon: IconButton(
+                  onPressed: () {},
+                  icon: const Icon(Icons.remove_red_eye_outlined),
+                ),
+              ),
+            ),
+            const SizedBox(height: 10),
+            Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Expanded(
+                  child: TextFormField(
+                    keyboardType: TextInputType.number,
+                    decoration: const InputDecoration(
+                      isDense: true,
+                      prefixIcon: Icon(Icons.message_outlined),
+                      hintText: 'Enter Email Code',
+                    ),
+                  ),
+                ),
+                OutlinedButton(
+                  style: OutlinedButton.styleFrom(
+                    primary: Colors.red,
+                    side: const BorderSide(color: Colors.red),
+                    minimumSize:
+                        Size(widget.width * 0.24, widget.height * 0.05),
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(80)),
+                  ),
+                  onPressed: () {},
+                  child: const Text('Send'),
+                ),
+              ],
+            ),
+            // Code to write
+            //    Ask whether to register as a buyer or seller?
+            //
+
+            const SizedBox(height: 30),
+            const LoginButtons(
+                buttonColor: Color.fromARGB(255, 241, 33, 18),
+                icon: Icons.edit,
+                iconColor: Colors.white,
+                label: 'Create Account',
+                textColor: Colors.white),
+            const SizedBox(height: 30),
+            Row(
+              children: const [
+                Expanded(child: Divider(thickness: 1, endIndent: 13)),
+                Text('Or Connect with'),
+                Expanded(child: Divider(thickness: 1, indent: 13)),
+              ],
+            ),
+            const SizedBox(height: 12),
+            LoginButtons(
+                buttonColor: Colors.grey[200],
+                icon: Icons.camera,
+                iconColor: Colors.green,
+                label: 'Register via Google',
+                textColor: Colors.black),
+            const SizedBox(height: 5),
+            LoginButtons(
+                buttonColor: Colors.blue[900],
+                icon: Icons.facebook_outlined,
+                iconColor: Colors.white,
+                label: 'Register via Facebook',
+                textColor: Colors.white),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Text('Have an Account?'),
+                const SizedBox(width: 5),
+                TextButton(
+                  onPressed: () {},
+                  child: const Text('Login'),
+                )
+              ],
+            )
+          ],
         ),
       ],
     );
