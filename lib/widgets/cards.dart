@@ -198,7 +198,8 @@ class _ItemCardState extends State<ItemCard> {
                 GestureDetector(
                     onTap: () {}, child: const Icon(Icons.favorite_border)),
                 GestureDetector(
-                    onTap: () {}, child: const Icon(Icons.shopping_cart_outlined)),
+                    onTap: () {},
+                    child: const Icon(Icons.shopping_cart_outlined)),
               ],
             ),
           ),
@@ -274,16 +275,16 @@ class _ItemCardState extends State<ItemCard> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             // SizedBox(height: height * 0.03),
-            const Text(
-              'KSh 790',
-              style: TextStyle(
+            Text(
+              '${args.data.map[args.index].price}',
+              style: const TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.w500,
               ),
             ),
             SizedBox(height: height * 0.013),
             Text(
-              'scjnn nnnnnnnnn ncscsnkcnxncj ndkcjn djvcnushdi ewicnhuerh isjiytiohbn udfhisehgn cufddu idhnvu duindv ndfvi',
+              '${args.data.map[args.index].title}',
               softWrap: true,
               style: TextStyle(
                 color: Colors.grey[700],
@@ -326,7 +327,7 @@ class _ItemCardState extends State<ItemCard> {
                     const VerticalDivider(thickness: 1.5),
                     // SizedBox(width: width * 0.03),
                     Text(
-                      'Reviews(12)',
+                      '(${args.data.map[args.index].rating.count})',
                       style: TextStyle(color: Colors.grey[700]),
                     ),
                   ],
@@ -547,7 +548,8 @@ class _ItemCardState extends State<ItemCard> {
               ],
             ),
           ),
-          Image.network('', fit: BoxFit.contain),
+          Text('${args.data.map[args.index].description}',
+              style: Theme.of(context).textTheme.labelMedium),
           SizedBox(height: height * 0.02)
         ],
       ),
@@ -560,9 +562,13 @@ class _ItemCardState extends State<ItemCard> {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Image.asset(
-                  '${args.data.map[args.index].image}',
-                  fit: BoxFit.contain,
+                SizedBox(
+                  height: height * 0.4,
+                  width: width,
+                  child: Image.network(
+                    '${args.data.map[args.index].image}',
+                    fit: BoxFit.contain,
+                  ),
                 ),
                 productCard,
                 SizedBox(height: height * 0.01),
