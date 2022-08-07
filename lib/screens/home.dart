@@ -8,6 +8,8 @@ import 'package:flutter/material.dart';
 
 import 'package:provider/provider.dart';
 
+import 'package:http/http.dart' as http;
+
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
@@ -221,9 +223,7 @@ class HomeTabs extends StatelessWidget {
                 color: Colors.grey[200],
                 child: Consumer<ProductsData>(
                   builder: (context, value, child) {
-                    // 
-                    // value.fetchProducts(http.Client());
-                    // 
+                    value.fetchProducts(http.Client());
                     if (value.isErr == true) {
                       return Center(
                         child: Text(value.errMessage),
