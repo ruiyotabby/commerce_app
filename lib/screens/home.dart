@@ -116,8 +116,20 @@ class _HomePageState extends State<HomePage> {
   }
 }
 
-class HomeTabs extends StatelessWidget {
-  HomeTabs({Key? key}) : super(key: key);
+class HomeTabs extends StatefulWidget {
+  const HomeTabs({Key? key}) : super(key: key);
+
+  @override
+  State<HomeTabs> createState() => _HomeTabsState();
+}
+
+class _HomeTabsState extends State<HomeTabs> {
+  @override
+  void initState() {
+    super.initState();
+    final data = Provider.of<ProductsData>(context, listen: false);
+    data.fetchProducts(http.Client());
+  }
 
   Card offerCard(String image, String label, String trailing) {
     return Card(
@@ -167,12 +179,15 @@ class HomeTabs extends StatelessWidget {
     'TV',
     'Camera',
   ];
+
   final int i = 0;
 
   @override
   Widget build(BuildContext context) {
     const Color selected = Colors.red;
     final Color? unselected = Colors.grey[700];
+
+    final data = Provider.of<ProductsData>(context);
 
     Widget saleContainer = Container(
       padding: const EdgeInsets.all(5),
@@ -221,14 +236,13 @@ class HomeTabs extends StatelessWidget {
               Container(
                 padding: const EdgeInsets.only(top: 10),
                 color: Colors.grey[200],
-                child: Consumer<ProductsData>(
-                  builder: (context, value, child) {
-                    value.fetchProducts(http.Client());
-                    if (value.isErr == true) {
+                child: LayoutBuilder(
+                  builder: (context, constraints) {
+                    if (data.isErr == true) {
                       return Center(
-                        child: Text(value.errMessage),
+                        child: Text(data.errMessage),
                       );
-                    } else if (value.map != null) {
+                    } else if (data.map != null) {
                       return const CardsGrid();
                     } else {
                       return const Center(
